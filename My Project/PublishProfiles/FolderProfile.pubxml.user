@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\Henry\share\Projects\HR_Recruit\Career_Source\New_Career\bin\app.publish\</_PublishTargetUrl>
+    <History>True|2021-12-24T03:43:18.0812023Z;True|2021-12-24T10:59:39.1055189+08:00;True|2021-12-24T10:59:17.1942238+08:00;True|2021-12-23T15:06:52.7497892+08:00;True|2021-12-23T13:46:03.5144516+08:00;True|2021-12-23T10:07:18.8327988+08:00;True|2021-12-23T09:56:00.2704107+08:00;True|2021-12-22T19:36:13.0963610+08:00;True|2021-12-22T17:41:24.5063479+08:00;True|2021-12-22T15:54:52.7708292+08:00;True|2021-12-22T15:46:18.5350811+08:00;True|2021-12-22T15:34:43.1399964+08:00;True|2021-12-22T15:29:06.2532163+08:00;True|2021-12-22T15:16:51.1824192+08:00;True|2021-12-22T14:41:01.8146302+08:00;True|2021-12-22T10:53:23.7174192+08:00;True|2021-12-22T09:43:04.6012626+08:00;True|2021-12-21T15:56:14.6584517+08:00;True|2021-12-21T15:13:29.2951284+08:00;True|2021-12-21T14:46:13.0971675+08:00;True|2021-12-21T14:30:10.3193584+08:00;True|2021-12-21T12:02:24.6649318+08:00;True|2021-12-21T11:51:48.9811059+08:00;True|2021-12-21T11:51:35.4274820+08:00;True|2021-12-21T10:27:29.7507649+08:00;True|2021-12-20T19:44:44.3370892+08:00;True|2021-12-16T18:47:14.6621574+08:00;True|2021-12-16T13:32:13.9651713+08:00;True|2021-12-16T12:07:23.0171744+08:00;True|2021-12-16T11:41:36.2212879+08:00;True|2021-12-16T11:31:00.1275865+08:00;True|2021-12-16T11:11:43.4293419+08:00;True|2021-12-15T16:31:41.2967163+08:00;True|2021-12-15T16:24:32.5216181+08:00;True|2021-12-15T14:02:02.3113537+08:00;True|2021-12-14T14:38:45.8762890+08:00;True|2021-12-14T14:26:47.1811616+08:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Ack.aspx">
+      <publishTime>12/21/2021 11:46:27</publishTime>
+    </File>
+    <File Include="Acknowledge.aspx">
+      <publishTime>12/24/2021 11:41:12</publishTime>
+    </File>
+    <File Include="Acknowledge2.aspx">
+      <publishTime>02/06/2020 15:34:32</publishTime>
+    </File>
+    <File Include="Apply.aspx">
+      <publishTime>12/14/2021 15:23:22</publishTime>
+    </File>
+    <File Include="Apply2.aspx">
+      <publishTime>06/03/2020 09:34:03</publishTime>
+    </File>
+    <File Include="bin/AjaxControlToolkit.dll">
+      <publishTime>05/10/2013 15:20:08</publishTime>
+    </File>
+    <File Include="bin/Career.dll">
+      <publishTime>12/24/2021 11:43:17</publishTime>
+    </File>
+    <File Include="bin/Career.pdb">
+      <publishTime>12/24/2021 11:43:17</publishTime>
+    </File>
+    <File Include="bin/Career.xml">
+      <publishTime>12/24/2021 11:43:17</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>10/28/2021 07:33:34</publishTime>
+    </File>
+    <File Include="Default.aspx">
+      <publishTime>07/09/2018 11:41:20</publishTime>
+    </File>
+    <File Include="Error.aspx">
+      <publishTime>02/06/2020 15:35:03</publishTime>
+    </File>
+    <File Include="FileUploadHandler.ashx">
+      <publishTime>10/22/2018 09:26:56</publishTime>
+    </File>
+    <File Include="GenApply.aspx">
+      <publishTime>12/23/2021 12:13:24</publishTime>
+    </File>
+    <File Include="GenMain.aspx">
+      <publishTime>12/21/2021 15:39:31</publishTime>
+    </File>
+    <File Include="GraduateForm1.aspx">
+      <publishTime>12/17/2021 10:56:53</publishTime>
+    </File>
+    <File Include="Images/calender.png">
+      <publishTime>01/15/2011 17:47:42</publishTime>
+    </File>
+    <File Include="Images/in.png">
+      <publishTime>12/20/2021 19:00:19</publishTime>
+    </File>
+    <File Include="Images/loading.gif">
+      <publishTime>10/22/2018 09:16:12</publishTime>
+    </File>
+    <File Include="Images/progressbar.gif">
+      <publishTime>10/22/2018 09:16:12</publishTime>
+    </File>
+    <File Include="Images/pye_logo1.jpg">
+      <publishTime>04/02/2008 15:26:42</publishTime>
+    </File>
+    <File Include="Images/pye_logo2.jpg">
+      <publishTime>09/20/2018 17:26:27</publishTime>
+    </File>
+    <File Include="include/adovbs.inc">
+      <publishTime>05/05/2003 15:12:32</publishTime>
+    </File>
+    <File Include="include/app.min.js">
+      <publishTime>12/23/2021 09:50:34</publishTime>
+    </File>
+    <File Include="include/app2.min.js">
+      <publishTime>11/01/2018 15:41:35</publishTime>
+    </File>
+    <File Include="include/header.inc">
+      <publishTime>09/20/2018 11:03:51</publishTime>
+    </File>
+    <File Include="include/main.js">
+      <publishTime>09/27/2018 11:48:47</publishTime>
+    </File>
+    <File Include="include/p2.js">
+      <publishTime>11/07/2018 11:57:01</publishTime>
+    </File>
+    <File Include="include/pv.js">
+      <publishTime>10/26/2018 18:03:31</publishTime>
+    </File>
+    <File Include="include/raw_app.js">
+      <publishTime>12/17/2021 11:58:21</publishTime>
+    </File>
+    <File Include="include/raw_app2.js">
+      <publishTime>11/01/2018 15:41:19</publishTime>
+    </File>
+    <File Include="include/style.css">
+      <publishTime>12/17/2021 10:35:08</publishTime>
+    </File>
+    <File Include="lib/boostrap/bootstrap-grid.css">
+      <publishTime>12/17/2021 10:45:30</publishTime>
+    </File>
+    <File Include="lib/boostrap/bootstrap-reboot.css">
+      <publishTime>09/06/2018 10:03:38</publishTime>
+    </File>
+    <File Include="lib/boostrap/bootstrap.css">
+      <publishTime>12/17/2021 11:02:08</publishTime>
+    </File>
+    <File Include="lib/boostrap/bootstrap.js">
+      <publishTime>09/06/2018 10:03:38</publishTime>
+    </File>
+    <File Include="lib/bootbox/bootbox.min.js">
+      <publishTime>10/30/2018 09:32:51</publishTime>
+    </File>
+    <File Include="lib/jquery.validate/additional-methods.min.js">
+      <publishTime>09/10/2018 09:35:09</publishTime>
+    </File>
+    <File Include="lib/jquery.validate/jquery.validate.min.js">
+      <publishTime>09/10/2018 09:35:09</publishTime>
+    </File>
+    <File Include="lib/jquery.validate/jquery.validate_IE.min.js">
+      <publishTime>09/12/2018 09:48:57</publishTime>
+    </File>
+    <File Include="lib/jquery.validate/style.css">
+      <publishTime>10/19/2018 11:14:22</publishTime>
+    </File>
+    <File Include="lib/jquery/jquery-3.3.1.js">
+      <publishTime>09/06/2018 10:04:13</publishTime>
+    </File>
+    <File Include="lib/upload/jquery.fileupload-ui.css">
+      <publishTime>10/22/2018 10:34:01</publishTime>
+    </File>
+    <File Include="lib/upload/jquery.fileupload.css">
+      <publishTime>10/22/2018 10:34:01</publishTime>
+    </File>
+    <File Include="lib/upload/jquery.fileupload.js">
+      <publishTime>10/22/2018 09:46:47</publishTime>
+    </File>
+    <File Include="lib/upload/jquery.iframe-transport.js">
+      <publishTime>10/22/2018 09:46:47</publishTime>
+    </File>
+    <File Include="lib/upload/jquery.ui.widget.js">
+      <publishTime>10/22/2018 09:46:47</publishTime>
+    </File>
+    <File Include="lib/upload/upload.js">
+      <publishTime>10/31/2018 16:01:15</publishTime>
+    </File>
+    <File Include="lib/upload/upload.min.js">
+      <publishTime>10/31/2018 16:01:23</publishTime>
+    </File>
+    <File Include="log4net.config">
+      <publishTime>12/14/2021 19:20:07</publishTime>
+    </File>
+    <File Include="Main.aspx">
+      <publishTime>12/16/2021 11:41:03</publishTime>
+    </File>
+    <File Include="PGDeclare.aspx">
+      <publishTime>12/24/2021 11:31:26</publishTime>
+    </File>
+    <File Include="Phase2Main.aspx">
+      <publishTime>12/14/2021 14:25:44</publishTime>
+    </File>
+    <File Include="Preview.aspx">
+      <publishTime>11/01/2018 13:51:36</publishTime>
+    </File>
+    <File Include="Scripts/calendar-en.min.js">
+      <publishTime>08/30/2010 22:03:00</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.4.1.min.js">
+      <publishTime>03/18/2010 20:43:42</publishTime>
+    </File>
+    <File Include="Scripts/jquery.dynDateTime.min.js">
+      <publishTime>08/30/2010 22:02:14</publishTime>
+    </File>
+    <File Include="Styles/calendar-blue.css">
+      <publishTime>08/30/2010 22:04:22</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/23/2021 17:41:39</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

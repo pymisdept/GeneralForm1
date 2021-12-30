@@ -1,0 +1,370 @@
+body {
+	margin-top: 10px;
+	background-color: #C5E4F0;
+	text-align: center;
+	font-family: "Arial";
+	font-size: 13px;
+	color: #595959;
+}
+table {
+	width: 100%;
+	border: 0px solid #f2f2f2;
+	border-spacing: 2;
+	padding : 0px;
+	margin : 0px;
+    font-family: "Arial";
+    font-size: 13px;
+    color: #595959;
+}
+table#privacy {
+	width: 100%;
+	border: 0px solid #000000;
+	border-spacing: 2;
+	padding : 0px;
+	margin : 0px;
+    font-family: "Arial";
+    font-size: 11px;
+    color: #595959;
+}
+.mytable
+{
+  text-align : center;
+  vertical-align: top;	
+}
+.mytable2
+{
+    vertical-align : top;	
+    text-align  : center;
+}
+
+.mytable2 thead
+{
+    vertical-align : top;	
+	background-color : #F5F5F5;
+	
+}
+
+table.myTable tbody, tr
+{
+	vertical-align: top;	
+}
+select
+{
+	/*
+	border-style: inset;
+    border-width: 1px; 
+	margin : 0px;
+    font-family: "Arial";
+    font-size: 13px;
+    color: #595959;
+	*/
+}
+.select-small
+{
+	/*
+	border-style: inset;
+    border-width: 1px; 
+	margin : 0px;
+    font-family: "Arial";
+    font-size: 11px;
+    color: #595959;
+    width : 100%;
+    */
+}
+div#pos_container {
+	background-color: #FFFFFF; 
+	width: 75%;
+	width: 75vw;
+	margin-left: auto; 
+	margin-right: auto;
+	padding: 15px 15px 0px 15px;
+	text-align: left;
+	margin-bottom: 10px;
+}
+div#pos_front_left {
+	border-top: 5px solid #C5E4F0;
+	padding-right: 10px;
+	padding-top: 10px;
+}
+.H3 {
+	font-family: "Arial";
+	font-size: 17px;
+	font-weight: bold;
+	color: #3FA6CC;
+	margin-bottom: 5px;
+}
+.H4 {
+	font-family: "Arial";
+	font-size: 15px;
+	font-weight: bold;
+	color: #3FA6CC;
+	margin: 0px;
+}
+.text-bold {
+	font-family: "Arial";
+	font-size: 13px;
+	font-weight: bold;
+	color: #595959;
+	line-height: 13px;
+}
+.text {
+	font-family: "Arial";
+	font-size: 13px;
+	color: #595959;
+	line-height: 13px;
+}
+.text-xs {
+	font-family: "Arial";
+	font-size: 12px;
+	color: #595959;
+	line-height: 13px;
+}
+.text-xs-h 
+{
+	font-family: "Arial";
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: underline;
+	color: #595959;
+	line-height: 13px;
+}
+.compulsory {
+	font-family: "Arial";
+	font-size: 13px;
+	color: #FF0066;
+}
+/*
+Forms
+*/
+form input {
+	font-family: "Arial";
+	font-size: 13px;
+	color: #595959;
+	padding: 2px;
+}
+.input-boxXXXS {
+	font-family: "Arial";
+	font-size: 13px;
+	color: #595959;
+	padding: 2px;
+        width: 30px;
+}
+.input-boxXXS {
+	font-family: "Arial";
+	font-size: 13px;
+	color: #595959;
+	padding: 2px;
+        width: 45px;
+}
+.input-boxXS {
+	font-family: "Arial";
+	font-size: 13px;
+	color: #595959;
+	padding: 2px;
+        width: 60px;
+}
+.input-boxS {
+	font-family: "Arial";
+	font-size: 13px;
+	color: #595959;
+	padding: 2px;
+        width: 100px;
+}
+.input-boxM1 {
+	font-family: "Arial";
+	font-size: 13px;
+	color: #595959;
+	padding: 2px;
+        width: 250px;
+}
+.input-boxM {
+	font-family: "Arial";
+	font-size: 13px;
+	color: #595959;
+	padding: 2px;
+    width: 100%; 
+}
+.input-boxC {
+	font-family: "Arial";
+	font-size: 13px;
+	color: #595959;
+	padding: 2px;
+}
+.input-boxL {
+	font-family: "Arial";
+	font-size: 13px;
+	color: #595959;
+	padding: 2px;
+        width: 450px;
+}
+.button {
+	font-family: "Arial";
+	font-weight: bold;
+	font-size: 12px;
+	padding: 2px;
+}
+.Radiobutton {
+	width: 60%;
+}
+.rightpad 
+{
+	margin-right: 5px;
+}
+.error
+{
+	color: Red;    
+    background-color: #FFFFF7;
+}
+
+	.cmxform fieldset p.error label {
+		color: red;
+	}
+	div.container {
+		background-color: #eee;
+		border: 1px solid red;
+		margin: 5px;
+		padding: 5px;
+	}
+	div.container ol li {
+		list-style-type: disc;
+		margin-left: 20px;
+	}
+	div.container {
+		display: none
+	}
+	.container label.error {
+		display: inline;
+	}
+	form.cmxform {
+		width: 30em;
+	}
+	form.cmxform label.error {
+		display: block;
+		margin-left: 1em;
+		width: auto;
+	}
+	
+    .mobilealign
+    {
+    	text-align: right;
+    }
+    
+@media all and (max-width: 100%)
+{
+    .logo
+    {
+		width: 199px;
+		height: 32px;
+    }
+    
+    div#pos_container {
+		background-color: #FFFFFF; 
+		width: 75%;
+		margin-left: auto; 
+		margin-right: auto;
+		padding: 10px 10px 0px 10px;
+		text-align: left;
+		margin-bottom: 20px;
+	}    
+	div#pos_front_left {
+		border-top: 5px solid #C5E4F0;
+		padding-left: 12px;
+		padding-right: 12px;
+		padding-top: 12px;
+	}
+    .mobilealign
+    {
+		text-align: left;	
+    }
+    
+    /* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	
+	table#eduTable td:nth-of-type(1):before { content: "教育程度 Education"; }
+	table#eduTable td:nth-of-type(2):before { content: "學校名稱 School/University ";  }
+	table#eduTable td:nth-of-type(3):before { content: "課程名稱 Programme"; }
+	table#eduTable td:nth-of-type(4):before { content: "主科 Major"; }
+	table#eduTable td:nth-of-type(5):before { content: "畢業年份 Year"; }
+	table#eduTable td:nth-of-type(6):before { content: "考獲成績 Results"; }
+	
+	table#awardTable td:nth-of-type(1):before { content: "機構名稱 Organization"; }
+	table#awardTable td:nth-of-type(2):before { content: "獎項 Name of Award"; }
+	table#awardTable td:nth-of-type(3):before { content: "獲取年份 Year"; }
+	
+	table#actvTable td:nth-of-type(1):before { content: "機構名稱 Organization"; }
+	table#actvTable td:nth-of-type(2):before { content: "職位 Position"; }
+	table#actvTable td:nth-of-type(3):before { content: "由 From (MM/YYYY)"; }
+	table#actvTable td:nth-of-type(4):before { content: "至 To  (MM/YYYY)"; }
+	
+	table#qualiTable td:nth-of-type(1):before { content: "機構名稱 Organization"; }
+	table#qualiTable td:nth-of-type(2):before { content: "名銜 Title"; }
+	table#qualiTable td:nth-of-type(3):before { content: "獲取年份 Year"; }
+	
+	table#jobTable td:nth-of-type(1):before { content: "公司名稱 Company Name"; }
+	table#jobTable td:nth-of-type(2):before { content: "職位 Position "; }
+	table#jobTable td:nth-of-type(3):before { content: "由 From (MM/YYYY)"; }
+	table#jobTable td:nth-of-type(4):before { content: "至 To  (MM/YYYY)"; }
+	table#jobTable td:nth-of-type(5):before { content: "最近薪金 Latest Salary"; }
+	
+	table#langTable td:nth-of-type(1):before { content: "語言 Language"; }
+	table#langTable td:nth-of-type(2):before { content: "說話 Speaking"; }
+	table#langTable td:nth-of-type(3):before { content: "閱讀 Reading"; }
+	table#langTable td:nth-of-type(4):before { content: "寫作 Writing"; }
+	
+	table#swTable td:nth-of-type(1):before { content: "電腦軟件 Computer Software"; }
+	table#swTable td:nth-of-type(2):before { content: "應用能力 Proficiency"; }
+}
+
+
+.custmaincol 
+{
+	padding-right: 20px;
+    padding-left: 20px;
+}
+
+.privacy {
+    font-family: "Arial";
+    font-size: 11px;
+}
+
+
+div#pos_container2 
+{
+	background-color: #FFFFFF; 
+	margin-left: auto; 
+	margin-right: auto;
+	padding: 32px 32px 0px 40px;
+	text-align: left;
+	margin-bottom: 10px;	
+}
