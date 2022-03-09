@@ -237,7 +237,7 @@
                         </td>
                         <td  style="width:55%">
                               <asp:Panel ID="plEdu" runat="server" Visible="false">Education Level 教育程度：
-		                               <asp:TextBox ID="txtEDU" runat="server" MaxLength="150" width="200px" />
+		                               <asp:TextBox ID="txtEDU" runat="server" MaxLength="100" width="200px" />
                             </asp:Panel>
                         </td>
                      </tr>
@@ -262,7 +262,7 @@
                         <span class="compulsory">* </span>Name of Institute 學校名稱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
                     <div class="col-sm-62">
-                        <asp:TextBox ID="Txt_dlist_SCH" runat="server" CssClass="input-boxM" MaxLength="250"   />
+                        <asp:TextBox ID="Txt_dlist_SCH" runat="server" CssClass="input-boxM" MaxLength="100"   />
                         <asp:RegularExpressionValidator ID="valid9" runat="server" ControlToValidate="Txt_dlist_SCH" ValidationExpression="^[\u4e00-\u9fa5_a-zA-Z\s]*$"
     ErrorMessage="Please enter English and Chinese Characters Only 只可輸入中文及英文字元" />
                     </div>
@@ -355,7 +355,7 @@
                <span class="compulsory"> </span>&nbsp;&nbsp;Current / Latest Company<br />&nbsp;&nbsp; 現職 / 最近公司
             </div>
             <div class="col-sm-62">
-		           <asp:TextBox ID="CurCompany" runat="server" CssClass="input-boxM" MaxLength="250"   />
+		           <asp:TextBox ID="CurCompany" runat="server" CssClass="input-boxM" MaxLength="100"   />
             </div>
        </div>
        <div class="form-group row">
@@ -363,7 +363,7 @@
                <span class="compulsory"> </span>&nbsp;&nbsp;Current / Latest Position<br />&nbsp;&nbsp; 現職 / 最近職位
             </div>
             <div class="col-sm-62">
-		           <asp:TextBox ID="CurPosition" runat="server" CssClass="input-boxM" MaxLength="250"   />
+		           <asp:TextBox ID="CurPosition" runat="server" CssClass="input-boxM" MaxLength="50"   />
             </div>
        </div>
         <div class="form-group row">

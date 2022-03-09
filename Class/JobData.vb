@@ -10,6 +10,10 @@
     Private vLastSalaryType_V As String = ""
     Private vLastSalaryType_T As String = ""
     Private vLastSalary As String = ""
+    Private vBusinessNature As String = ""
+    Private vLeaveReason_V As String = ""
+    Private vLeaveReason_T As String = ""
+    Private vLeaveROthers As String = ""
 
     Public Property CompName() As String
         Get
@@ -20,6 +24,41 @@
         End Set
     End Property
 
+    Public Property BusinessNature() As String
+        Get
+            Return vBusinessNature
+        End Get
+        Set(ByVal v As String)
+            vBusinessNature = v
+        End Set
+    End Property
+
+    Public Property LeaveReason_V() As String
+        Get
+            Return vLeaveReason_V
+        End Get
+        Set(ByVal v As String)
+            vLeaveReason_V = v
+        End Set
+    End Property
+
+    Public Property LeaveReason_T() As String
+        Get
+            Return vLeaveReason_T
+        End Get
+        Set(ByVal v As String)
+            vLeaveReason_T = v
+        End Set
+    End Property
+
+    Public Property LeaveROthers() As String
+        Get
+            Return vLeaveROthers
+        End Get
+        Set(ByVal v As String)
+            vLeaveROthers = v
+        End Set
+    End Property
     Public Property PosName() As String
         Get
             Return vPosName

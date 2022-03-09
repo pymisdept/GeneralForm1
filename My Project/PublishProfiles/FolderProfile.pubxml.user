@@ -4,8 +4,8 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_PublishTargetUrl>D:\Henry\share\Projects\HR_Recruit\Career_Source\New_Career\bin\app.publish\</_PublishTargetUrl>
-    <History>True|2021-12-24T03:43:18.0812023Z;True|2021-12-24T10:59:39.1055189+08:00;True|2021-12-24T10:59:17.1942238+08:00;True|2021-12-23T15:06:52.7497892+08:00;True|2021-12-23T13:46:03.5144516+08:00;True|2021-12-23T10:07:18.8327988+08:00;True|2021-12-23T09:56:00.2704107+08:00;True|2021-12-22T19:36:13.0963610+08:00;True|2021-12-22T17:41:24.5063479+08:00;True|2021-12-22T15:54:52.7708292+08:00;True|2021-12-22T15:46:18.5350811+08:00;True|2021-12-22T15:34:43.1399964+08:00;True|2021-12-22T15:29:06.2532163+08:00;True|2021-12-22T15:16:51.1824192+08:00;True|2021-12-22T14:41:01.8146302+08:00;True|2021-12-22T10:53:23.7174192+08:00;True|2021-12-22T09:43:04.6012626+08:00;True|2021-12-21T15:56:14.6584517+08:00;True|2021-12-21T15:13:29.2951284+08:00;True|2021-12-21T14:46:13.0971675+08:00;True|2021-12-21T14:30:10.3193584+08:00;True|2021-12-21T12:02:24.6649318+08:00;True|2021-12-21T11:51:48.9811059+08:00;True|2021-12-21T11:51:35.4274820+08:00;True|2021-12-21T10:27:29.7507649+08:00;True|2021-12-20T19:44:44.3370892+08:00;True|2021-12-16T18:47:14.6621574+08:00;True|2021-12-16T13:32:13.9651713+08:00;True|2021-12-16T12:07:23.0171744+08:00;True|2021-12-16T11:41:36.2212879+08:00;True|2021-12-16T11:31:00.1275865+08:00;True|2021-12-16T11:11:43.4293419+08:00;True|2021-12-15T16:31:41.2967163+08:00;True|2021-12-15T16:24:32.5216181+08:00;True|2021-12-15T14:02:02.3113537+08:00;True|2021-12-14T14:38:45.8762890+08:00;True|2021-12-14T14:26:47.1811616+08:00;</History>
+    <_PublishTargetUrl>D:\Henry\share\Projects\HR_Recruit\Career_Source\GeneralForm1\bin\app.publish\</_PublishTargetUrl>
+    <History>True|2022-02-25T05:39:57.1812192Z;True|2022-02-17T15:37:19.8768045+08:00;True|2022-02-17T15:37:03.2466872+08:00;True|2022-02-17T15:08:05.2848234+08:00;True|2022-02-17T14:41:21.7795039+08:00;True|2022-02-09T17:46:12.3191602+08:00;True|2022-02-09T17:31:16.6448689+08:00;True|2022-02-09T17:17:51.3405366+08:00;True|2022-02-09T16:58:35.7884535+08:00;True|2022-02-09T16:40:56.5607082+08:00;True|2022-01-27T17:06:14.4702962+08:00;True|2022-01-24T11:48:18.6863391+08:00;True|2022-01-24T10:57:13.3530266+08:00;True|2022-01-24T10:09:02.3314403+08:00;True|2022-01-24T09:56:58.3435765+08:00;True|2022-01-24T09:22:15.4130794+08:00;True|2021-12-24T11:43:18.0812023+08:00;True|2021-12-24T10:59:39.1055189+08:00;True|2021-12-24T10:59:17.1942238+08:00;True|2021-12-23T15:06:52.7497892+08:00;True|2021-12-23T13:46:03.5144516+08:00;True|2021-12-23T10:07:18.8327988+08:00;True|2021-12-23T09:56:00.2704107+08:00;True|2021-12-22T19:36:13.0963610+08:00;True|2021-12-22T17:41:24.5063479+08:00;True|2021-12-22T15:54:52.7708292+08:00;True|2021-12-22T15:46:18.5350811+08:00;True|2021-12-22T15:34:43.1399964+08:00;True|2021-12-22T15:29:06.2532163+08:00;True|2021-12-22T15:16:51.1824192+08:00;True|2021-12-22T14:41:01.8146302+08:00;True|2021-12-22T10:53:23.7174192+08:00;True|2021-12-22T09:43:04.6012626+08:00;True|2021-12-21T15:56:14.6584517+08:00;True|2021-12-21T15:13:29.2951284+08:00;True|2021-12-21T14:46:13.0971675+08:00;True|2021-12-21T14:30:10.3193584+08:00;True|2021-12-21T12:02:24.6649318+08:00;True|2021-12-21T11:51:48.9811059+08:00;True|2021-12-21T11:51:35.4274820+08:00;True|2021-12-21T10:27:29.7507649+08:00;True|2021-12-20T19:44:44.3370892+08:00;True|2021-12-16T18:47:14.6621574+08:00;True|2021-12-16T13:32:13.9651713+08:00;True|2021-12-16T12:07:23.0171744+08:00;True|2021-12-16T11:41:36.2212879+08:00;True|2021-12-16T11:31:00.1275865+08:00;True|2021-12-16T11:11:43.4293419+08:00;True|2021-12-15T16:31:41.2967163+08:00;True|2021-12-15T16:24:32.5216181+08:00;True|2021-12-15T14:02:02.3113537+08:00;True|2021-12-14T14:38:45.8762890+08:00;True|2021-12-14T14:26:47.1811616+08:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Ack.aspx">
@@ -21,19 +21,19 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/14/2021 15:23:22</publishTime>
     </File>
     <File Include="Apply2.aspx">
-      <publishTime>06/03/2020 09:34:03</publishTime>
+      <publishTime>03/06/2020 09:34:03</publishTime>
     </File>
     <File Include="bin/AjaxControlToolkit.dll">
       <publishTime>05/10/2013 15:20:08</publishTime>
     </File>
     <File Include="bin/Career.dll">
-      <publishTime>12/24/2021 11:43:17</publishTime>
+      <publishTime>02/25/2022 13:39:08</publishTime>
     </File>
     <File Include="bin/Career.pdb">
-      <publishTime>12/24/2021 11:43:17</publishTime>
+      <publishTime>02/25/2022 13:39:08</publishTime>
     </File>
     <File Include="bin/Career.xml">
-      <publishTime>12/24/2021 11:43:17</publishTime>
+      <publishTime>02/25/2022 13:39:08</publishTime>
     </File>
     <File Include="bin/log4net.dll">
       <publishTime>10/28/2021 07:33:34</publishTime>
@@ -48,7 +48,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/22/2018 09:26:56</publishTime>
     </File>
     <File Include="GenApply.aspx">
-      <publishTime>12/23/2021 12:13:24</publishTime>
+      <publishTime>02/07/2022 10:13:35</publishTime>
     </File>
     <File Include="GenMain.aspx">
       <publishTime>12/21/2021 15:39:31</publishTime>
@@ -90,7 +90,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/27/2018 11:48:47</publishTime>
     </File>
     <File Include="include/p2.js">
-      <publishTime>11/07/2018 11:57:01</publishTime>
+      <publishTime>01/26/2022 11:39:08</publishTime>
     </File>
     <File Include="include/pv.js">
       <publishTime>10/26/2018 18:03:31</publishTime>
@@ -134,6 +134,15 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="lib/jquery/jquery-3.3.1.js">
       <publishTime>09/06/2018 10:04:13</publishTime>
     </File>
+    <File Include="lib/PROGRESS/progressStep.js">
+      <publishTime>01/26/2022 16:37:44</publishTime>
+    </File>
+    <File Include="lib/PROGRESS/raphael.js">
+      <publishTime>01/26/2022 16:37:44</publishTime>
+    </File>
+    <File Include="lib/PROGRESS/stepbar.js">
+      <publishTime>01/26/2022 16:37:44</publishTime>
+    </File>
     <File Include="lib/upload/jquery.fileupload-ui.css">
       <publishTime>10/22/2018 10:34:01</publishTime>
     </File>
@@ -159,7 +168,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/14/2021 19:20:07</publishTime>
     </File>
     <File Include="Main.aspx">
-      <publishTime>12/16/2021 11:41:03</publishTime>
+      <publishTime>12/28/2021 09:49:45</publishTime>
     </File>
     <File Include="PGDeclare.aspx">
       <publishTime>12/24/2021 11:31:26</publishTime>
@@ -183,7 +192,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/30/2010 22:04:22</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/23/2021 17:41:39</publishTime>
+      <publishTime>01/24/2022 10:37:42</publishTime>
     </File>
   </ItemGroup>
 </Project>

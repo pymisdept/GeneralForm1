@@ -98,14 +98,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Acknowledge.aspx" />
-    <Content Include="Apply2.aspx" />
-    <Content Include="GraduateForm1.aspx" />
     <Content Include="Images\calender.png" />
     <Content Include="Images\in.png" />
+    <Content Include="lib\PROGRESS\progressStep.js" />
+    <Content Include="lib\PROGRESS\raphael.js" />
+    <Content Include="lib\PROGRESS\stepbar.js" />
     <Content Include="PGDeclare.aspx" />
     <Content Include="GenMain.aspx" />
     <Content Include="GenApply.aspx" />
-    <Content Include="Phase2Main.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Preview.aspx" />
     <Content Include="Images\pye_logo1.jpg" />
@@ -128,7 +128,6 @@
     <Content Include="lib\jquery.validate\style.css" />
     <Content Include="lib\jquery\jquery-3.3.1.js" />
     <Content Include="Main.aspx" />
-    <Content Include="Apply.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -139,13 +138,9 @@
       <DependentUpon>Acknowledge.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Apply2.aspx.designer.vb">
-      <DependentUpon>Apply2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Apply2.aspx.vb">
-      <DependentUpon>Apply2.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
+    <Compile Include="Class\App1_Hdr.vb" />
+    <Compile Include="Class\FilePhotoData.vb" />
+    <Compile Include="Class\Position.vb" />
     <Compile Include="Class\ActivityData.vb" />
     <Compile Include="Class\AwardData.vb" />
     <Compile Include="Class\EduData.vb" />
@@ -155,13 +150,7 @@
     <Compile Include="Class\LanguageData.vb" />
     <Compile Include="Class\QualificationData.vb" />
     <Compile Include="Class\SoftwareData.vb" />
-    <Compile Include="Acknowledge2.aspx.designer.vb">
-      <DependentUpon>Acknowledge2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Acknowledge2.aspx.vb">
-      <DependentUpon>Acknowledge2.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
+    <Compile Include="cvdata.vb" />
     <Compile Include="Error.aspx.designer.vb">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
@@ -171,13 +160,6 @@
     </Compile>
     <Compile Include="FileUploadHandler.ashx.vb">
       <DependentUpon>FileUploadHandler.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="GraduateForm1.aspx.designer.vb">
-      <DependentUpon>GraduateForm1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GraduateForm1.aspx.vb">
-      <DependentUpon>GraduateForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PGDeclare.aspx.designer.vb">
       <DependentUpon>PGDeclare.aspx</DependentUpon>
@@ -199,13 +181,6 @@
     <Compile Include="GenApply.aspx.vb">
       <DependentUpon>GenApply.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Phase2Main.aspx.designer.vb">
-      <DependentUpon>Phase2Main.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Phase2Main.aspx.vb">
-      <DependentUpon>Phase2Main.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.vb">
       <SubType>ASPXCodeBehind</SubType>
@@ -244,13 +219,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Apply.aspx.designer.vb">
-      <DependentUpon>Apply.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Apply.aspx.vb">
-      <DependentUpon>Apply.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -261,7 +229,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Acknowledge2.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="FileUploadHandler.ashx" />
     <Content Include="Images\loading.gif" />

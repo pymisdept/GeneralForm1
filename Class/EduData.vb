@@ -16,6 +16,8 @@
     Private vResult_GPA As String = ""
     Private vResult_CGPA As String = ""
     Private vResult_Grade As String = ""
+    Private vFromMonth As String = ""
+    Private vFromYear As String = ""
 
     Public Property Type() As String
         Get
@@ -71,6 +73,23 @@
         End Set
     End Property
 
+    Public Property FromMonth() As String
+        Get
+            Return vFromMonth
+        End Get
+        Set(ByVal v As String)
+            vFromMonth = v
+        End Set
+    End Property
+
+    Public Property FromYear() As String
+        Get
+            Return vFromYear
+        End Get
+        Set(ByVal v As String)
+            vFromYear = v
+        End Set
+    End Property
     Public Property SchOthers() As String
         Get
             Return vSchOthers

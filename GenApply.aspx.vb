@@ -19,13 +19,14 @@ Partial Public Class GenApply
     Private RecruitID As String
     Private curRefNum As String
     Private RefCode As String
+    Private destLocation As String
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        T_Key = Request.QueryString("Key")
-        RecruitID = Request.QueryString("ID")
-        T2_Key = Request.QueryString("Position")
-        RefCode = Request.QueryString("RefCode")
+        'T_Key = Request.QueryString("Key")
+        RecruitID = Session("P1APID")
+        T2_Key = Session("P1APOS")
+        RefCode = Session("P1AREF")
         curRefNum = Session("P1AREF")
         Dim today As DateTime = DateTime.Today
         dtAvadate.Text = today.ToString("dd/MM/yyyy")
@@ -297,7 +298,7 @@ Partial Public Class GenApply
             If dt.Rows.Count > 0 Then
                 school.DataSource = dt
                 school.DataTextField = "description"
-                school.DataValueField = "school"
+                school.DataValueField = "id"
                 school.DataBind()
             End If
 
@@ -338,6 +339,7 @@ Partial Public Class GenApply
         Dim title As String
         Dim seqNo As String = ""
         Dim refNum As String = ""
+        Dim cvd As cvdata = New cvdata()
         cn.Open()
         oTrans = cn.BeginTransaction()
 
@@ -373,42 +375,56 @@ Partial Public Class GenApply
             cm2.Parameters.AddWithValue("@pos", T2_Key)
             cm2.ExecuteNonQuery()
             refNum = RefCode & "-" & DateTime.Now.ToString("yyyyMMdd") & "-" & seqNo
-
+            cvd.refno = refNum
+            cvd.pos = T2_Key
             ''''' (1) Get and Update Seq No. - End
             logger.Info("Start Save file to path......")
             ''''' (2) Upload File - Begin
+            Dim filetemppath As String = ConfigurationManager.AppSettings("TempUploadToPathgform1")
             Dim filepath As String = ConfigurationManager.AppSettings("UploadToPathgform1")
+            Dim hrMail As String = ConfigurationManager.AppSettings("HrMail")
+            Dim filelist As List(Of String)=New List(Of String)
+            Dim SourcePath As String = ""
+            Dim MoveLocation As String = ""
+            SourcePath = filetemppath
+            MoveLocation = filepath
+            destLocation = filepath
             logger.Info("The path is " + filepath)
             Dim f1 As String = refNum & "_" & DateTime.Now.ToString("MMddHHmmss") & "_P1001" & fUpload1.FileName.Substring(fUpload1.FileName.LastIndexOf("."))
             logger.Info("The file name is " + f1)
-            fUpload1.SaveAs(filepath & f1)
+            fUpload1.SaveAs(filetemppath & f1)
+            filelist.Add(f1)
             logger.Info("successful save file“)
             Dim f2, f3, f4, f5 As String
 
             If fUpload2.FileName <> "" Then
                 f2 = refNum & "_" & DateTime.Now.ToString("MMddHHmmss") & "_P1002" & fUpload2.FileName.Substring(fUpload2.FileName.LastIndexOf("."))
-                fUpload2.SaveAs(filepath & f2)
+                fUpload2.SaveAs(filetemppath & f2)
+                filelist.Add(f2)
             Else
                 f2 = ""
             End If
 
             If fUpload3.FileName <> "" Then
                 f3 = refNum & "_" & DateTime.Now.ToString("MMddHHmmss") & "_P1003" & fUpload3.FileName.Substring(fUpload3.FileName.LastIndexOf("."))
-                fUpload3.SaveAs(filepath & f3)
+                fUpload3.SaveAs(filetemppath & f3)
+                filelist.Add(f3)
             Else
                 f3 = ""
             End If
 
             If fUpload4.FileName <> "" Then
                 f4 = refNum & "_" & DateTime.Now.ToString("MMddHHmmss") & "_P1004" & fUpload4.FileName.Substring(fUpload4.FileName.LastIndexOf("."))
-                fUpload4.SaveAs(filepath & f4)
+                fUpload4.SaveAs(filetemppath & f4)
+                filelist.Add(f4)
             Else
                 f4 = ""
             End If
 
             If fUpload5.FileName <> "" Then
                 f5 = refNum & "_" & DateTime.Now.ToString("MMddHHmmss") & "_P1005" & fUpload5.FileName.Substring(fUpload5.FileName.LastIndexOf("."))
-                fUpload5.SaveAs(filepath & f5)
+                fUpload5.SaveAs(filetemppath & f5)
+                filelist.Add(f5)
             Else
                 f5 = ""
             End If
@@ -416,18 +432,19 @@ Partial Public Class GenApply
             ''''' (2) Upload File - End
 
             cn1.Open()
-            cm = New SqlCommand("select id from tblReferral where code='" + referral_ds.SelectedItem.Value + "'", cn1)
+            cm = New SqlCommand("select id,description from tblReferral where code='" + referral_ds.SelectedItem.Value + "'", cn1)
             dr = cm.ExecuteReader()
             Dim refid As Integer
             If dr.HasRows Then
                 While (dr.Read)
                     refid = dr.GetInt32(0)
+                    cvd.vacancy = dr.GetString(1)
                 End While
             End If
             dr.Close()
             cn1.Close()
             cn1.Open()
-            cm = New SqlCommand("select id,description from tblSalutation where code='" + drpSalutation.SelectedItem.Value + "'", cn1)
+            cm = New SqlCommand("select id,description,chi_description from tblSalutation where code='" + drpSalutation.SelectedItem.Value + "'", cn1)
             dr = cm.ExecuteReader()
             Dim saluID As Integer
             title = ""
@@ -435,39 +452,44 @@ Partial Public Class GenApply
                 While (dr.Read)
                     saluID = dr.GetInt32(0)
                     title = dr.GetString(1)
+                    logger.Info("start store to class!")
+                    cvd.Salutation = dr.GetString(1) & " " & dr.GetString(2)
                 End While
             End If
             dr.Close()
             cn1.Close()
             Dim adddistID As Integer
             cn1.Open()
-            cm = New SqlCommand("select id from district where district='" + addr_ds.SelectedItem.Value + "'", cn1)
+            cm = New SqlCommand("select id,description from district where district='" + addr_ds.SelectedItem.Value + "'", cn1)
             dr = cm.ExecuteReader()
             If dr.HasRows Then
                 While (dr.Read)
                     adddistID = dr.GetInt32(0)
+                    cvd.LivDist = dr.GetString(1)
                 End While
             End If
             dr.Close()
             cn1.Close()
             Dim edulvlID As Integer
             cn1.Open()
-            cm = New SqlCommand("select id from education where education='" + ctrl_dlist_EDU.SelectedItem.Value + "'", cn1)
+            cm = New SqlCommand("select id,education,description from education where education='" + ctrl_dlist_EDU.SelectedItem.Value + "'", cn1)
             dr = cm.ExecuteReader()
             If dr.HasRows Then
                 While (dr.Read)
                     edulvlID = dr.GetInt32(0)
+                    cvd.EducationLvl = dr.GetString(2)
                 End While
             End If
             dr.Close()
             cn1.Close()
             Dim schoolID As Integer
             cn1.Open()
-            cm = New SqlCommand("select id from school where school='" + ctrl_dlist_SCH.SelectedItem.Value + "'", cn1)
+            cm = New SqlCommand("select id,description from school where id='" + ctrl_dlist_SCH.SelectedItem.Value + "'", cn1)
             dr = cm.ExecuteReader()
             If dr.HasRows Then
                 While (dr.Read)
                     schoolID = dr.GetInt32(0)
+                    cvd.NameofInst = dr.GetString(1)
                 End While
             End If
             dr.Close()
@@ -503,6 +525,7 @@ Partial Public Class GenApply
                 logger.Info("@staffpos" & IIf(Request.Form("staffPosi") Is Nothing, "", Request.Form("staffPosi")))
                 cm2.Parameters.Add("@staffpos", SqlDbType.NVarChar).Value = IIf(Request.Form("staffPosi") Is Nothing, "", Request.Form("staffPosi"))
                 logger.Info("@knowchanel" & "")
+                cvd.vacancy = cvd.vacancy & "<br/>" & "(" & Request.Form("staffname") & " / " & IIf(Request.Form("staffPosi") Is Nothing, "", Request.Form("staffPosi")) & ")"
                 cm2.Parameters.Add("@knowchanel", SqlDbType.NVarChar).Value = ""
             ElseIf (referral_ds.SelectedItem.Value = "ref6") Then
                 logger.Info("@knowchanel" & "")
@@ -510,7 +533,8 @@ Partial Public Class GenApply
                 logger.Info("@knowchanel" & "")
                 cm2.Parameters.Add("@staffpos", SqlDbType.NVarChar).Value = ""
                 logger.Info("@knowchanel" & "")
-                cm2.Parameters.Add("@knowchanel", SqlDbType.NVarChar).Value = Request.Form("knowchannel")
+                cm2.Parameters.Add("@knowchanel", SqlDbType.NVarChar).Value = "Others 其他 " & "<br/>" & Request.Form("knowchannel")
+                cvd.vacancy = cvd.vacancy & "<br/>" & "(" & Request.Form("knowchannel") & ")"
             Else
                 logger.Info("@knowchanel" & "")
                 cm2.Parameters.Add("@staffname", SqlDbType.NVarChar).Value = ""
@@ -523,12 +547,16 @@ Partial Public Class GenApply
             cm2.Parameters.Add("@saluID", SqlDbType.Int).Value = saluID
             logger.Info("@engname" & Request.Form("EngSurName"))
             cm2.Parameters.Add("@engname", SqlDbType.NVarChar).Value = Request.Form("EngSurName")
+            cvd.FamilyName = Request.Form("EngSurName")
             logger.Info("@engother" & Request.Form("EngName"))
             cm2.Parameters.Add("@engother", SqlDbType.NVarChar).Value = Request.Form("EngName")
+            cvd.OtherName = Request.Form("EngName")
             logger.Info("@alianame" & Request.Form("Alias"))
             cm2.Parameters.Add("@alianame", SqlDbType.NVarChar).Value = Request.Form("Alias")
+            cvd.AliasName = Request.Form("Alias")
             logger.Info("@chiname" & Request.Form("ChnName"))
             cm2.Parameters.Add("@chiname", SqlDbType.NVarChar).Value = Request.Form("ChnName")
+            cvd.ChineseName = Request.Form("ChnName")
             If (rdIDcard1.Checked) Then
                 logger.Info("@iddocopt" & "D1")
                 cm2.Parameters.Add("@iddocopt", SqlDbType.NVarChar).Value = "D1"
@@ -543,14 +571,18 @@ Partial Public Class GenApply
             If (radY.Checked) Then
                 logger.Info("@reqwkvisa" & "Y")
                 cm2.Parameters.Add("@reqwkvisa", SqlDbType.NVarChar).Value = "Y"
+                cvd.ReqVisa = "Yes 需要"
             ElseIf (radN.Checked) Then
                 logger.Info("@reqwkvisa" & "N")
                 cm2.Parameters.Add("@reqwkvisa", SqlDbType.NVarChar).Value = "N"
+                cvd.ReqVisa = "No 不需要"
             End If
             logger.Info("@email" & Request.Form("email"))
             cm2.Parameters.Add("@email", SqlDbType.NVarChar).Value = Request.Form("email")
+            cvd.Email = Request.Form("email")
             logger.Info("@phone" & Request.Form("txtArea") & Request.Form("phone"))
-            cm2.Parameters.Add("@phone", SqlDbType.NVarChar).Value = IIf(Request.Form("txtArea") Is Nothing, "+852" & Request.Form("phone"), Request.Form("txtArea") & Request.Form("phone"))
+            cm2.Parameters.Add("@phone", SqlDbType.NVarChar).Value = IIf(Request.Form("txtArea").Trim() = "", "+852 - " & Request.Form("phone"), Request.Form("txtArea") & " - " & Request.Form("phone"))
+            cvd.Contact = IIf(Request.Form("txtArea").Trim() = "", "+852 - " & Request.Form("phone"), Request.Form("txtArea") & "-" & Request.Form("phone"))
             logger.Info("@adddist" & "")
             cm2.Parameters.Add("@adddist", SqlDbType.Int).Value = adddistID
             logger.Info("@edulvl" & "")
@@ -559,6 +591,7 @@ Partial Public Class GenApply
             If (ctrl_dlist_EDU.SelectedItem.Value = "OTH") Then
                 logger.Info("@edulvlname" & Request.Form("txtEDU"))
                 cm2.Parameters.Add("@edulvlname", SqlDbType.NVarChar).Value = Request.Form("txtEDU")
+                cvd.EducationLvl = "Others 其他 " & "<br/>" & Request.Form("txtEDU")
             Else
                 logger.Info("@edulvlname" & "")
                 cm2.Parameters.Add("@edulvlname", SqlDbType.NVarChar).Value = ""
@@ -568,28 +601,41 @@ Partial Public Class GenApply
             If (ctrl_dlist_SCH.SelectedItem.Value = "OTH") Then
                 logger.Info("@schoolname" & Request.Form("Txt_dlist_SCH"))
                 cm2.Parameters.Add("@schoolname", SqlDbType.NVarChar).Value = Request.Form("Txt_dlist_SCH")
+                cvd.NameofInst = "Others 其他 " & "<br/>" & Request.Form("Txt_dlist_SCH")
             Else
                 logger.Info("@schoolname" & "")
                 cm2.Parameters.Add("@schoolname", SqlDbType.NVarChar).Value = ""
             End If
             logger.Info("@programname" & Request.Form("txt_subject"))
             cm2.Parameters.Add("@programname", SqlDbType.NVarChar).Value = Request.Form("txt_subject")
+            cvd.ProgName = Request.Form("txt_subject")
             logger.Info("@yearatt" & Request.Form("ctrl_txt_GRM") + "/" + Request.Form("ctrl_txt_GRY"))
             cm2.Parameters.Add("@yearatt", SqlDbType.NVarChar).Value = Request.Form("ctrl_txt_GRM") + "/" + Request.Form("ctrl_txt_GRY")
+            cvd.YearAttained = Request.Form("ctrl_txt_GRM") + "/" + Request.Form("ctrl_txt_GRY")
             logger.Info("@knowchanel" & Request.Form("ExpSal"))
             cm2.Parameters.Add("@Workexp", SqlDbType.Decimal).Value = CDec(Val(Request.Form("WorkExp")))
+            cvd.RelevWork = Request.Form("WorkExp")
             logger.Info("@expectsal" & "")
             cm2.Parameters.Add("@expectsal", SqlDbType.Int).Value = CInt(Request.Form("ExpSal"))
-            logger.Info("@knowchanel" & "")
+            cvd.ExpectedSal = Request.Form("ExpSal")
+            logger.Info("@avaopt" & "")
             cm2.Parameters.Add("@avaopt", SqlDbType.NVarChar).Value = DrAvaDate.SelectedItem.Value
+            cvd.DateAvai = DrAvaDate.SelectedItem.Text
             logger.Info("@avadt" & Request.Form("dtAvadate"))
             cm2.Parameters.Add("@avadt", SqlDbType.NVarChar).Value = IIf(Request.Form("dtAvadate") Is Nothing, "", Request.Form("dtAvadate"))
+            If Not (Request.Form("dtAvadate") Is Nothing) Then
+                cvd.DateAvai = Request.Form("dtAvadate")
+            End If
+
             logger.Info("@latestemp" & Request.Form("CurCompany"))
             cm2.Parameters.Add("@latestemp", SqlDbType.NVarChar).Value = Request.Form("CurCompany")
+            cvd.CurrCompany = Request.Form("CurCompany")
             logger.Info("@lastPos" & Request.Form("CurPosition"))
             cm2.Parameters.Add("@lastPos", SqlDbType.NVarChar).Value = Request.Form("CurPosition")
+            cvd.CurrPosi = Request.Form("CurPosition")
             logger.Info("@lastSal" & Request.Form("CurSAL"))
             cm2.Parameters.Add("@lastSal", SqlDbType.Int).Value = CInt(IIf(Request.Form("CurSAL") Is Nothing Or Request.Form("CurSAL") = "", "0", Request.Form("CurSAL")))
+            cvd.CurrSal = Request.Form("CurSAL")
             logger.Info("@filpath" & filepath)
             cm2.Parameters.Add("@filpath", SqlDbType.NVarChar).Value = filepath
             logger.Info("@filename1" & f1)
@@ -607,7 +653,7 @@ Partial Public Class GenApply
             logger.Info("@compcode" & "PYM")
             cm2.Parameters.Add("@compcode", SqlDbType.NVarChar).Value = "PYM"
             logger.Info("@token" & T_Key)
-            cm2.Parameters.Add("@token", SqlDbType.NVarChar).Value = T_Key
+            cm2.Parameters.Add("@token", SqlDbType.NVarChar).Value = ""
             cm2.ExecuteNonQuery()
             cm2 = Nothing
             ''''' (4) Insert education data - End
@@ -618,6 +664,26 @@ Partial Public Class GenApply
             SendEmail(refNum, Request.Form("EngSurName"), T2_Key, title)
             Session("REFNO") = refNum
             Response.Redirect("acknowledge.aspx", False)
+            'after confirm then move file from temp folder to production folder
+            '--------------------------------------------------------------------------------------------------------------
+            'filelist
+            Dim destinationPath As String
+            For Each filenamefinal As String In filelist
+                Dim SourceFile As String = Path.Combine(SourcePath, filenamefinal)
+                If File.Exists(SourceFile) Then
+                    destinationPath = Path.Combine(MoveLocation, filenamefinal)
+                    If File.Exists(destinationPath) Then
+                        File.Delete(destinationPath)
+                    End If
+                    File.Move(SourceFile, destinationPath)
+                    File.Delete(SourceFile)
+                Else
+                    logger.Info("Source File Not move")
+                End If
+            Next
+            '--------------------------------------------------------------------------------------------------------------
+            '---Send mail to hr@pyengineering.com
+            Send2HR(refNum, Request.Form("EngSurName"), T2_Key, filelist, cvd, hrMail)
             ''''' (5) Send Mail & Redirect to acknowledge page - End
             Exit Sub
 
@@ -975,7 +1041,109 @@ Partial Public Class GenApply
         End Try
 
     End Sub
+    Class cvdata
+        Public refno As String
+        Public pos As String
+        Public vacancy As String
+        Public Salutation As String
+        Public FamilyName As String
+        Public OtherName As String
+        Public AliasName As String
+        Public ChineseName As String
+        Public ReqVisa As String
+        Public Email As String
+        Public Contact As String
+        Public LivDist As String
+        Public EducationLvl As String
+        Public NameofInst As String
+        Public ProgName As String
+        Public YearAttained As String
+        Public RelevWork As String
+        Public ExpectedSal As String
+        Public DateAvai As String
+        Public CurrCompany As String
+        Public CurrPosi As String
+        Public CurrSal As String
+        Public File1 As String
 
+    End Class
+    Protected Sub Send2HR(ByVal refNo As String, ByVal surName As String, ByVal pos As String, ByVal AttachementFiles As List(Of String), ByVal cvd As cvdata, ByVal hrMail As String)
+        Dim MailBody As String
+        Dim Mail As New MailMessage
+        Dim logger As ILog = Nothing
+        logger = LogManager.GetLogger("General Apply Form1")
+        ''''' (1) Get and Update Seq No. - Begin
+        logger.Info("Start Generate Mail......")
+        ' Old Template
+        'MailBody = "<p style='font-family: Arial, Helvetica, sans-serif;'>Dear " & EngOtherName.Text & ",<br /><br />Thank you for your registration. We will contact you soon.<br /><br />Best Regards,<br />Paul Y. Engineering Group Limited.</p>"
+
+        ' New Template (2018-09-20)
+        MailBody = "<table style='width:1080px;border:1px black;border-collapse:collapse' border='1'>" &
+            "<tbody>" &
+            "<tr>" &
+            "<td width='25%'>Reference No. <br/> 申請編號 </td>" &
+            "<td width='75%'>" & cvd.refno & "</td> </tr> <td width='25%'>Position Applied<br/>申請職位</td> " &
+            "<td width='75%'>" & cvd.pos & "</td></tr><tr><td width='25%'>Know Vacancy Through<br />從何得悉空缺</td><td width='75%'>" & cvd.vacancy & "</td></tr>" &
+            "<tr><td width='25%'>Salutation<br />稱謂</td><td width='75%'>" & cvd.Salutation & "</td></tr>" &
+            "<tr><td width='25%'>Family Name (printed on ID)<br />英文姓氏 (與身份證上相同)</td><td width='75%'>" & cvd.FamilyName & "</td></tr>" &
+            "<tr><td width='25%'>Other Name* (printed on ID)<br />英文名字 (與身份證上相同)</td><td width='75%'>" & cvd.OtherName & "</td></tr>" &
+            "<tr><td width='25%'>Alias<br />別名</td><td width='75%'>" & cvd.AliasName & "</td></tr>" &
+            "<tr><td width='25%'>Chinese Name (printed on ID)<br />中文姓名 (與身份證上相同)</td><td width='75%'>" & cvd.ChineseName & "</td></tr>" &
+        "<tr><td width='25%'>Required Visa to work in HK?<br />需要簽證才能在香港工作?</td><td width='75%'>" & cvd.ReqVisa & "</td></tr>" &
+        "<tr><td width='25%'>Email<br />電郵</td><td width='75%'><u><a href='mailto:'" & cvd.Email & ">" & cvd.Email & "</a></u></td></tr>" &
+        "<tr><td width='25%'>Contact No.<br />電話號碼</td><td width='75%'> " & cvd.Contact & "</td></tr>" &
+        "<tr><td width='25%'>Living District<br />居住地區</td><td width='75%'>" & cvd.LivDist & "</td></tr>" &
+        "<tr><td width='25%'>Education Level<br />教育程度</td><td width='75%'>" & cvd.EducationLvl & "</td></tr>" &
+        "<tr><td width='25%'>Name of Institute<br />院校名稱</td><td width='75%'>" & cvd.NameofInst & "</td></tr>" &
+        "<tr><td width='25%'>Programme Name / Subject<br />課程名稱 / 科目</td><td width='75%'>" & cvd.ProgName & "</td></tr>" &
+        "<tr><td width='25%'>Year Attained (MM/YYYY) <br/>考獲年份</td><td width='75%'>" & cvd.YearAttained & "</td></tr>" &
+        "<tr><td width='25%'>Relevant Working Experience (year)<br />相關工作經驗(年)</td><td width='75%'>" & cvd.RelevWork & "</td></tr>" &
+        "<tr><td width='25%'>Expected Salary (Monthly)<br />要求薪金 (月薪)</td><td width='75%'>" & cvd.ExpectedSal & "</td></tr>" &
+        "<tr><td width='25%'>Date Available<br />可到職日期</td><td width='75%'>" & cvd.DateAvai & "</td></tr>" &
+        "<tr><td width='25%'>Current/Latest Employer Company<br />現職/最近僱主公司</td><td width='75%'>" & cvd.CurrCompany & "</td></tr>" &
+        "<tr><td width='25%'>Current/Latest Position<br />現時/最近職位</td><td width='75%'>" & cvd.CurrPosi & "</td></tr>" &
+        "<tr><td width='25%'>Current/Latest Salary (Monthly)<br />現職/最近薪金 (月薪)</td><td width='75%'>" & cvd.CurrSal & "</td></tr></tbody></table>"
+
+        Mail.Subject = "(" & refNo & ") Application for the position of " & pos
+        Mail.From = New MailAddress(ConfigurationManager.AppSettings("MailFromggform1"))
+        Mail.To.Add(New MailAddress(hrMail))
+
+        Mail.IsBodyHtml = True
+        Mail.BodyEncoding = Encoding.GetEncoding("utf-8")
+        Mail.Body = MailBody
+        For Each filenamefinal As String In AttachementFiles
+            Dim destinationPath As String = Path.Combine(destLocation, filenamefinal)
+            If File.Exists(destinationPath) Then
+                logger.Info("Attachement File is:" & destinationPath)
+                Dim data As Net.Mail.Attachment = New Net.Mail.Attachment(destinationPath)
+                Mail.Attachments.Add(data)
+            End If
+
+        Next
+
+        Dim smtpClient As New SmtpClient()
+        smtpClient.Host = ConfigurationManager.AppSettings("smtpServergform1")
+        smtpClient.Port = ConfigurationManager.AppSettings("smtpPortgform1")
+        'Dim altView As AlternateView = AlternateView.CreateAlternateViewFromString(MailBody, Nothing, "text/html")
+        'Dim pyeLogo As LinkedResource = New LinkedResource(AppDomain.CurrentDomain.BaseDirectory & "Images\pye_logo2.jpg", "image/jpeg")
+        'pyeLogo.ContentId = "pyelogo"
+        'altView.LinkedResources.Add(pyeLogo)
+        'Mail.AlternateViews.Add(altView)
+
+        'Dim linkedIcon As LinkedResource = New LinkedResource(AppDomain.CurrentDomain.BaseDirectory & "Images\in.png", "image/png")
+        'linkedIcon.ContentId = "linkedIcon"
+        'altView.LinkedResources.Add(linkedIcon)
+        'Mail.AlternateViews.Add(altView)
+
+        Try
+            logger.Info("Start Send Mail......")
+            smtpClient.Send(Mail)
+        Catch ex As Exception
+            logger.Error(ex.Message)
+            MessageBox(ex.Message)
+        End Try
+
+    End Sub
     Private Sub MessageBox(ByVal strMsg As String)
         Dim lbl As New Label
         lbl.Text = "<script language='javascript'>" & Environment.NewLine _
